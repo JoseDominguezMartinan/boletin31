@@ -9,21 +9,22 @@ package boletin31;
  *
  * @author jdominguezmartinan
  */
-public class Empregado
+public abstract class Empregado
 {
     private String nome;
     private String apelidos;
     private String dni;
     private String direccion;
     private String telefono;
-    private float salario;
+    float salario;
+    int antiguedade;
     private Empregado supervisor;
 
     public Empregado()
     {
     }
 
-    public Empregado(String nome,String apelidos,String dni,String direccion,String telefono,float salario,Empregado supervisor)
+    public Empregado(String nome,String apelidos,String dni,String direccion,String telefono,float salario,int antiguedade,Empregado supervisor)
     {
         this.nome = nome;
         this.apelidos = apelidos;
@@ -31,6 +32,7 @@ public class Empregado
         this.direccion = direccion;
         this.telefono = telefono;
         this.salario = salario;
+        this.antiguedade=antiguedade;
         this.supervisor = supervisor;
     }
 
@@ -98,6 +100,12 @@ public class Empregado
     {
         return supervisor;
     }
+    public int getAntiguedade(){
+        return antiguedade;
+    }
+    public void setAntiguedade(int antiguedade){
+        this.antiguedade=antiguedade;
+    }
 
     public void setSupervisor(Empregado supervisor)
     {
@@ -107,10 +115,14 @@ public class Empregado
     @Override
     public String toString()
     {
-        return "Empregado{"+"nome="+nome+", apelidos="+apelidos+", dni="+dni+", direccion="+direccion+", telefono="+telefono+", salario="+salario+", supervisor="+supervisor+'}';
+        return "Empregado{"+"nome="+nome+", apelidos="+apelidos+", dni="+dni+", direccion="+direccion+", telefono="+telefono+", salario="+salario+",antiguedade="+antiguedade+" ,supervisor="+supervisor+'}';
     }
     
-    public abstract void imprimir();
+  public void cambiarSupervisor(Empregado emp){
+      supervisor=emp;
+  }
+  public abstract void incrementarSalario();
+  
     
     
 }
